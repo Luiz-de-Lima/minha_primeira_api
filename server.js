@@ -16,25 +16,13 @@ function emailValido(email) {
 }
 
 function validaTelefone(telefone) {
-  console.log("telefone recebido:", telefone);
-  console.log("tipo:", typeof telefone);
   const apenasNumeros = String(telefone).replace(/\D/g, "");
-  console.log("apenas numeros:", apenasNumeros);
-  console.log("resultado regex:", /^\d{10,11}$/.test(apenasNumeros));
   return /^\d{10,11}$/.test(apenasNumeros);
 }
 
-// function validaTelefone(telefone) {
-//   // const apenasNumeros = telefone.replace(/\D/g, "");
-//   // return /^\d{10,11}$/.test(apenasNumeros);
-
-//   const apenasNumeros = String(telefone).replace(/\D/g, "");
-//   return /^\d{10,11}$/.test(apenasNumeros);
-// }
-
 //midleware de validação
 function validarCadastro(req, res, next) {
-  const { nome, email, telefone,mensagem } = req.body;
+  const { nome, email, telefone, mensagem } = req.body;
   if (!nome || !email || !telefone) {
     return res
       .status(400)
